@@ -1,5 +1,15 @@
 import React from 'react';
 
+//React router
+import {
+	Routes,
+	Route
+} from "react-router-dom";
+
+
+//Pages
+import Header from 'components/Header';
+
 
 //Main component content
 const App = () => {
@@ -7,9 +17,11 @@ const App = () => {
 
 	//Component render
 	return (
-		<>
-			
-		</>
+		<Routes>
+			<Route path="/" element={<Header />} >
+
+			</Route>
+		</Routes>
 	);
 };
 

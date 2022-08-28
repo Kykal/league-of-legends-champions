@@ -6,3 +6,19 @@
 
 	box-sizing: border-box;
 }
+
+body, html {
+	background-color: hsl(221, 68%, 7%);
+	color: hsl(0, 0%, 90%);
+}
+
+div#root {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 100vh;
+
+	position: relative;
+
+}

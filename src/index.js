@@ -7,6 +7,11 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 
+//React router
+import {
+  BrowserRouter,
+} from "react-router-dom";
+
 //Custom components
 import App from './App';
 
@@ -18,7 +23,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //Render component in strict mode
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 
