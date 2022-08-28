@@ -1,62 +1,51 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+
 
 
 //React router
 import {
-	Outlet
+	Outlet,
+	Link
 } from 'react-router-dom';
+
 
 //Styled components
 import styled from 'styled-components';
 
 
-const HeaderSx = styled.header`
+//Icons
+import { AiFillHome } from 'react-icons/ai';
 
+
+//Custom components
+import IconButton from 'components/IconButton';
+
+
+const HeaderContainer = styled.header`
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+
+	height: 4em;
+	padding: 1.25em;
 `;
+
 
 //Main component content
 const Header = () => {
 
-	const [ championList, setChampionList ] = useState([]);
-
-	//On component mount
-	useEffect( () => {
-		
-	}, [] );
-
 	//Component render
 	return (
 		<>
-			<HeaderSx>
-				<table>
-					<thead>
-						<tr>
-							<th>
-								Champion
-							</th>
-							<th>
-								Role
-							</th>
-							<th>
-
-							</th>
-							<th>
-								Price
-							</th>
-							<th>
-
-							</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>
-								b
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</HeaderSx>
+			<HeaderContainer>
+				<Link to="/" >
+					<IconButton>
+						<AiFillHome />
+					</IconButton>
+				</Link>
+			</HeaderContainer>
 			<Outlet />
 		</>
 	);
