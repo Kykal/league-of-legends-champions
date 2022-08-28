@@ -7,8 +7,13 @@ import {
 } from "react-router-dom";
 
 
-//Pages
+
+//Custom components
 import Header from 'components/Header';
+
+//Pages
+import Main from 'pages/Main';
+import Champion from 'pages/Champion';
 
 
 //Main component content
@@ -19,7 +24,8 @@ const App = () => {
 	return (
 		<Routes>
 			<Route path="/" element={<Header />} >
-
+				<Route path="/" exact element={<Main />} />
+				<Route path=":champion" element={<Champion />} />
 			</Route>
 		</Routes>
 	);

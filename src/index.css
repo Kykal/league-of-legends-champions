@@ -1,24 +1,31 @@
+:root {
+	--white:			hsl(0, 0%, 90%);
+
+	--ultra-light-blue:	hsl(210, 61%, 44%);
+	--blue:			hsl(210, 80%, 12%);
+	--dark-blue:	hsl(221, 68%, 7%);
+	--light-blue:hsl(210, 78%, 16%);
+
+	--gold: #caab72;
+
+}
+
 * {
 	font-family: Roboto;
 
 	margin: 0;
 	padding: 0;
-
+	
 	box-sizing: border-box;
 }
 
 body, html {
-	background-color: hsl(221, 68%, 7%);
-	color: hsl(0, 0%, 90%);
+	color: var(--white);
+	background-color: var(--dark-blue);
 }
 
 div#root {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
 	height: 100vh;
 
 	position: relative;
-
 }
