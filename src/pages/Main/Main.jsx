@@ -41,7 +41,7 @@ const Main = () => {
 			let version = await axios.get("https://ddragon.leagueoflegends.com/api/versions.json");
 			version = version.data[0];
 
-			let champions = await axios.get(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`);
+			let champions = await axios.get(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`);
 			champions = champions.data.data;
 
 
