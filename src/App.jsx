@@ -24,10 +24,10 @@ const App = () => {
 	//Component render
 	return (
 		<Routes>
-			<Route path="./" element={<Header />} >
-				<Route path="./" exact element={<Main />} />
-				<Route path="./:version/:champion" element={<Champion />} />
-				<Route path="./*" exact element={<Navigate to="/" />} />
+			<Route path="/" element={<Header />} >
+				<Route path="/" exact element={<Main />} />
+				<Route path="/:version/:champion" element={<Champion />} />
+				<Route path="*" element={<Navigate to="/" replace />} />
 			</Route>
 		</Routes>
 	);
