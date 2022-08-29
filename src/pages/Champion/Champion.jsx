@@ -22,7 +22,7 @@ const Champion = () => {
 	
 	useEffect( () => {
 
-		axios.get(`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/${champion}.json`)
+		axios.get(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/${champion}.json`)
 			.then( (response) => {
 				const data = response.data.data[champion]
 				
@@ -30,9 +30,9 @@ const Champion = () => {
 					key: data.key,
 					name: data.id,
 					title: data.title,
-					spashArt: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion}_0.jpg`,
-					loadingScreen: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion}_0.jpg`,
-					square: `http://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${champion}.png`,
+					spashArt: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion}_0.jpg`,
+					loadingScreen: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion}_0.jpg`,
+					square: `https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/${champion}.png`,
 					lore: data.lore
 				};
 				
