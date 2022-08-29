@@ -1,121 +1,158 @@
 import React from 'react';
 
 
+//React router
+import { useNavigate } from 'react-router-dom';
+
+
 //Style component
 import styled from 'styled-components';
 
-
 const TableContainer = styled.div`
 	padding-top: 2em;
-
+	padding-bottom: 2em;
 	overflow: hidden;
 `;
 
 const Table = styled.table`
 	width: 100%;
-
-	height: 10em;
-	max-height: 10em;	
-
-	td {
-		background-color: var(--light-blue);
-	}
-
 	border-spacing: 0;
-`;
 
-const TableHead = styled.thead`
-	background-color: var(--blue);
-
-	th {
-		padding-top: 0.5em;
-		padding-bottom: 0.5em;
+	td.text-center, th.text-center {
+		text-align: center;
 	}
 
-	th.border {
-		border-bottom: 1px solid var(--gold);
+	thead {
+		height: 4.25em;
+		border-top-left-radius: 0.25em;
+		border-top-right-radius: 0.25em;
+		
+		th.head-cell {
+			position: sticky;
+			top: 0;
+			background-color: var(--blue);
+		}
+
+		th.head-divider {
+			border-bottom: 1px solid var(--gold);
+		}
+
+		th#head-champion {
+			width: 34em;
+			max-width: 34em;
+		}
+
+		th#head-region {
+			width: 5.5em;
+			max-width: 5.5em;
+		}
+
+		th#head-price__blue-essence,
+		th#head-price__riot-points {
+			width: 11em;
+			max-width: 11em;
+		}
 	}
-`;
 
-const TableBody = styled.tbody`
-	tr:hover td {
-		background-color: var(--ultra-light-blue);
-		cursor: pointer;
+	tbody {
+		td#champion-icon__container {
+			width: 3.75em;
+			height: 3.75em;
+
+			div {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				img#champion-icon {
+					width: 3em;
+					height: 3em;
+				}
+			}
+		}
+
+		tr.champion {
+			background-color: var(--light-blue);
+			cursor: pointer;
+			user-select : none;
+
+			:hover {
+				background-color: var(--ultra-light-blue);
+			}
+		}
 	}
-`;
-
-const Icon = styled.img`
-	width: 3em;
-	height: 3em;
-`;
-
-const TableIcon = styled.td`
-	width: 3.75em;
-	height: 3.75em;
-
-	div {
-		height: 100%;
-		width: 100%;
-
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-`;
-
-const RegionCell = styled.td`
-	text-align: center;
-`;
-
-const PriceCell = styled.td`
-	text-align: center;
 `;
 
 
 //Main component content
 const ChampionsTable = ({champions}) => {
 
-
 	//Component render
 	return (
 		<TableContainer>
-			{champions.length > 0 && (
-				<Table>
-					<TableHead>
-						<tr>
-							<th colSpan={2} rowSpan={2} className="border" >Champion</th>
-							<th rowSpan={2} className="border" >Region</th>
-							<th colSpan={2} >Price</th>
+			<Table>
+				<thead>
+					<tr>
+						<th colSpan={2} rowSpan={2} id="head-champion" className="head-divider head-cell" >Champion</th>
+						<th rowSpan={2} id="head-region" className="head-divider head-cell" >Region</th>
+						<th colSpan={2} id="head-price" className="head-cell" >Price</th>
+					</tr>
+					<tr>
+						<th id="head-price__blue-essence" className="head-divider head-cell" >Blue Essence</th>
+						<th id="head-price__riot-points" className="head-divider head-cell" >Riot Points</th>
+					</tr>
+				</thead>
+				<tbody>
+					{ champions.length === 0 ? (
+						<tr className="champion" >
+							<td colSpan={5} className="text-center" >
+								<h2>
+									Loading...
+								</h2>
+							</td>
 						</tr>
-						<tr>
-							<th className='border' >Blue essence</th>
-							<th className='border' >Riot Points</th>
-						</tr>
-					</TableHead>
-					<TableBody>
-						{champions.map( champion => (
-							<tr key={champion.key} >
-								<TableIcon>
-									<div>
-										<Icon src={champion.img} alt={`${champion.name} icon`} loading="lazy" />
-									</div>
-								</TableIcon>
-								<td>
-									{champion.name}, {champion.title}
-								</td>
-								<RegionCell>
-									Region
-								</RegionCell>
-								<PriceCell>1200</PriceCell>
-								<PriceCell>190</PriceCell>
-							</tr>
-						) )}
-					</TableBody>
-				</Table>
-			)}
+					) : (
+						<TableBodyContent champions={champions} />
+					) }
+				</tbody>
+			</Table>
 		</TableContainer>
 	);
 };
 
 
 export default ChampionsTable; //Export main component
+
+
+
+const TableBodyContent = ({champions}) => {
+
+	const navigate = useNavigate();
+
+	//Description. What does this?
+	const sendToChampionPage = (championName) => {
+		navigate(`./${championName}`)
+	};
+
+	return(
+		<>
+			{champions.map( champion => (
+				<tr key={champion.key} data-champion={champion.name} id={`champion__${champion.name}`} className="champion" onClick={() => sendToChampionPage(champion.name)} >
+					<td id="champion-icon__container" >
+						<div>
+							<img id="champion-icon" src={champion.img} alt={`${champion.name} icon`} loading="lazy" />
+						</div>
+					</td>
+					<td id="champion-name" >
+						{champion.name}, {champion.title}
+					</td>
+					<td className='text-center' >
+						Region
+					</td>
+					<td className='text-center' >1200</td>
+					<td className='text-center' >190</td>
+				</tr>
+			) )}
+		</>
+	)
+};
