@@ -130,14 +130,14 @@ const TableBodyContent = ({champions}) => {
 	const navigate = useNavigate();
 
 	//Description. What does this?
-	const sendToChampionPage = (championName) => {
-		navigate(`./${championName}`)
+	const sendToChampionPage = (championName, version) => {
+		navigate(`./${version}/${championName}`)
 	};
 
 	return(
 		<>
 			{champions.map( champion => (
-				<tr key={champion.key} data-champion={champion.name} id={`champion__${champion.name}`} className="champion" onClick={() => sendToChampionPage(champion.name)} >
+				<tr key={champion.key} data-champion={champion.name} id={`champion__${champion.name}`} className="champion" onClick={() => sendToChampionPage(champion.name, champion.version)} >
 					<td id="champion-icon__container" >
 						<div>
 							<img id="champion-icon" src={champion.img} alt={`${champion.name} icon`} loading="lazy" />

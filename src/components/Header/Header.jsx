@@ -32,6 +32,21 @@ const HeaderContainer = styled.header`
 	padding: 1.25em;
 `;
 
+const MainSx = styled.main`
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+`;
+
+const Container = styled.div`
+	min-width: 5em;
+	width: 60em;
+	max-width: 60em;
+
+	margin-left: 2em;
+	margin-right: 2em;
+`;
+
 
 //Main component content
 const Header = () => {
@@ -46,7 +61,11 @@ const Header = () => {
 					</IconButton>
 				</Link>
 			</HeaderContainer>
-			<Outlet />
+			<MainSx>
+				<Container>
+					<Outlet />
+				</Container>
+			</MainSx>
 		</>
 	);
 };

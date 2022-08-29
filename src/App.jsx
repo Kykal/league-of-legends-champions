@@ -3,7 +3,8 @@ import React from 'react';
 //React router
 import {
 	Routes,
-	Route
+	Route,
+	Navigate
 } from "react-router-dom";
 
 
@@ -25,7 +26,8 @@ const App = () => {
 		<Routes>
 			<Route path="/" element={<Header />} >
 				<Route path="/" exact element={<Main />} />
-				<Route path=":champion" element={<Champion />} />
+				<Route path=":version/:champion" element={<Champion />} />
+				<Route path="*" exact element={<Navigate to="/" />} />
 			</Route>
 		</Routes>
 	);
