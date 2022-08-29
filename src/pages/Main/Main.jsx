@@ -4,28 +4,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
-//Style component
-import styled from 'styled-components';
-
 //Custom components
 import SearchChampion	from './SearchChampion';
 import ChampionsTable	from './ChampionsTable';
-
-const MainSx = styled.main`
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-`;
-
-const Container = styled.div`
-	min-width: 5em;
-	width: 60em;
-	max-width: 60em;
-
-	margin-left: 2em;
-	margin-right: 2em;
-`;
-
 
 
 //Main component content
@@ -56,7 +37,8 @@ const Main = () => {
 					key: actualChampion.key,
 					name: actualChampion.id,
 					title: actualChampion.title,
-					img: `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${actualChampion.id}.png`
+					img: `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${actualChampion.id}.png`,
+					version: version
 				}
 				newChampionList.push(temporalChampionData);
 			}
@@ -73,12 +55,10 @@ const Main = () => {
 
 	//Component render
 	return (
-		<MainSx>
-			<Container>
-				<SearchChampion championsNames={championsNameAutocomplete} />
-				<ChampionsTable champions={championsList} />
-			</Container>
-		</MainSx>
+		<>
+			<SearchChampion championsNames={championsNameAutocomplete} />
+			<ChampionsTable champions={championsList} />
+		</>
 	);
 };
 
