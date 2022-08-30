@@ -32,6 +32,7 @@ const MainSx = styled.main`
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
+	padding-bottom: 4em;
 `;
 
 const Container = styled.div`

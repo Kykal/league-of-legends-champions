@@ -14,7 +14,6 @@ import styled from 'styled-components';
 
 const TableContainer = styled.div`
 	padding-top: 2em;
-	padding-bottom: 2em;
 	overflow: hidden;
 `;
 
