@@ -14,11 +14,7 @@ import styled from 'styled-components';
 
 
 //Icons
-import { AiFillHome } from 'react-icons/ai';
-
-
-//Custom components
-import IconButton from 'components/IconButton';
+import championIcon from 'assets/championIcon.png';
 
 
 const HeaderContainer = styled.header`
@@ -47,6 +43,24 @@ const Container = styled.div`
 	margin-right: 2em;
 `;
 
+const MainButton = styled.button`
+	background: none;
+	border: none;
+
+	cursor: pointer;
+	
+	img {
+		height: 3em;
+		widht: auto;
+
+		transition-duration: 0.125s;
+		
+		:hover {
+			filter: brightness(1.5);
+			scale: 1.125;
+		}
+	}
+`;
 
 //Main component content
 const Header = () => {
@@ -56,9 +70,12 @@ const Header = () => {
 		<>
 			<HeaderContainer>
 				<Link to="/" >
-					<IconButton>
-						<AiFillHome />
-					</IconButton>
+					<MainButton>
+						<img
+							src={championIcon}
+							alt="Champion icon"
+						/>
+					</MainButton>
 				</Link>
 			</HeaderContainer>
 			<MainSx>
