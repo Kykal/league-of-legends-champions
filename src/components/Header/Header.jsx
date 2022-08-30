@@ -66,21 +66,22 @@ const MainButton = styled.button`
 	}
 `;
 
+const Background = styled.img`
+	position: absolute;
+	z-index: 0;
+	width: 100%;
+	height: auto;
+`;
+
 //Main component content
 const Header = () => {
 
 	//Component render
 	return (
 		<>
-			<img id="background-img"
-				src=""
-				alt="" 
-				style={{
-					position: "absolute",
-					zIndex: 0,
-					width: "100%",
-					height: "auto"
-				}}
+			<Background id="background-img"
+				src={""}
+				alt="Background"
 			/>
 			<HeaderContainer>
 				<Link to="/" >
