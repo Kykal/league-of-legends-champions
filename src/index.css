@@ -2,12 +2,13 @@
 	--white:			hsl(0, 0%, 90%);
 
 	--ultra-light-blue:	#2c70b5;
-	--blue:			hsl(209, 80%, 12%);
-	--dark-blue:	hsl(223, 67%, 7%);
-	--light-blue:	hsl(210, 78%, 16%);
+	--light-blue:	#092949;
+	--blue:			#061f37;
+	--dark-blue:	#060d1e;
 
-	--gold:			hsl(39, 45%, 62%);
-
+	--light-gold:	#c9aa71;
+	--gold:			#caab72;
+	--dark-gold:	#c19144;
 }
 
 * {
