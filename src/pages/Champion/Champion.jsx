@@ -126,7 +126,7 @@ const Champion = () => {
 	useEffect( () => {
 		const getChampionData = async () => {
 			let data = await axios.get(
-				`http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/${champion}.json`
+				`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/${champion}.json`
 				).catch( () => {
 					console.warn( "Could not fetch data. Redirecting to main page." )
 				} );
@@ -159,8 +159,8 @@ const Champion = () => {
 			
 			const championData = {
 				key: parseInt(data.key),
-				splashartUrl: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion}_0.jpg`,
-				squareIconUrl: `http://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion}.png`,
+				splashartUrl: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion}_0.jpg`,
+				squareIconUrl: `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion}.png`,
 				name: data.name,
 				title: data.title,
 				blueEssence: 0,
@@ -168,23 +168,23 @@ const Champion = () => {
 				lore: data.lore,
 				abilities: {
 					p: {
-						iconUrl: `http://ddragon.leagueoflegends.com/cdn/12.16.1/img/passive/${data.passive.image.full}`,
+						iconUrl: `https://ddragon.leagueoflegends.com/cdn/12.16.1/img/passive/${data.passive.image.full}`,
 						name: data.passive.name
 					},
 					q: {
-						iconUrl: `http://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.spells[0].id}.png`,
+						iconUrl: `https://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.spells[0].id}.png`,
 						name: data.spells[0].name
 					},
 					w: {
-						iconUrl: `http://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.spells[1].id}.png`,
+						iconUrl: `https://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.spells[1].id}.png`,
 						name: data.spells[1].name
 					},
 					e: {
-						iconUrl: `http://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.spells[2].id}.png`,
+						iconUrl: `https://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.spells[2].id}.png`,
 						name: data.spells[2].name
 					},
 					r: {
-						iconUrl: `http://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.spells[3].id}.png`,
+						iconUrl: `https://ddragon.leagueoflegends.com/cdn/12.16.1/img/spell/${data.spells[3].id}.png`,
 						name: data.spells[3].name
 					}
 				},
