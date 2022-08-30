@@ -1,13 +1,14 @@
 :root {
 	--white:			hsl(0, 0%, 90%);
 
-	--ultra-light-blue:	hsl(210, 61%, 44%);
-	--blue:			hsl(210, 80%, 12%);
-	--dark-blue:	hsl(221, 68%, 7%);
-	--light-blue:hsl(210, 78%, 16%);
+	--ultra-light-blue:	#2c70b5;
+	--light-blue:	#092949;
+	--blue:			#061f37;
+	--dark-blue:	#060d1e;
 
-	--gold: #caab72;
-
+	--light-gold:	#c9aa71;
+	--gold:			#caab72;
+	--dark-gold:	#c19144;
 }
 
 * {

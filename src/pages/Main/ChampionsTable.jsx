@@ -5,6 +5,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
+import BlueEssenceIcon	from 'assets/blueEssenceIcon.png';
+import RiotPointsIcon	from 'assets/riotPointsIcon.png';
+import RunaterraIcon		from 'assets/runaterraIcon.png';
+
 //Style component
 import styled from 'styled-components';
 
@@ -21,6 +25,8 @@ const Table = styled.table`
 	td.text-center, th.text-center {
 		text-align: center;
 	}
+
+	
 
 	thead {
 		height: 4.25em;
@@ -55,6 +61,30 @@ const Table = styled.table`
 	}
 
 	tbody {
+
+		td.flex-center, td.flex-center {
+			div {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				img#region-icon {
+					width: 2em;
+					height: 2em;
+					margin-right: 0.25em;
+				}
+
+				img#price-icon {
+					width: 1.25em;
+					height: 1.25em;
+				}
+
+				img.riotPoints{
+					margin-right: 0.35em;
+				}
+			}
+		}
+
 		td#champion-icon__container {
 			width: 3.75em;
 			height: 3.75em;
@@ -146,11 +176,24 @@ const TableBodyContent = ({champions}) => {
 					<td id="champion-name" >
 						{champion.name}, {champion.title}
 					</td>
-					<td className='text-center' >
-						Region
+					<td className='flex-center' >
+						<div>
+							<img src={RunaterraIcon} alt="RunaterraIcon" id="region-icon" />
+							Runaterra
+						</div>
 					</td>
-					<td className='text-center' >1200</td>
-					<td className='text-center' >190</td>
+					<td className='flex-center' >
+						<div>
+							<img src={BlueEssenceIcon} alt="Blue Essence Icon" id="price-icon" />
+							1234
+						</div>
+					</td>
+					<td className='flex-center' >
+						<div>
+							<img src={RiotPointsIcon} alt="Blue Essence Icon" id="price-icon" className="riotPoints" /> 
+							567
+						</div>
+					</td>
 				</tr>
 			) )}
 		</>
