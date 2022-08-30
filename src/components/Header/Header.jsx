@@ -1,6 +1,8 @@
 import React from 'react';
 
 
+//Redux
+import { useSelector } from 'react-redux';
 
 //React router
 import {
@@ -18,6 +20,9 @@ import championIcon from 'assets/championIcon.png';
 
 
 const HeaderContainer = styled.header`
+
+	position: relative;
+	z-index: 1;
 
 	display: flex;
 	align-items: center;
@@ -63,12 +68,28 @@ const MainButton = styled.button`
 	}
 `;
 
+const Background = styled.img`
+	position: absolute;
+	z-index: 0;
+	width: 100%;
+	height: auto;
+
+	filter: blur(5px);
+`;
+
 //Main component content
 const Header = () => {
+
+	const bgUrl = useSelector( state => state.backgroundUrl );
+
 
 	//Component render
 	return (
 		<>
+			<Background id="background-img"
+				src={bgUrl}
+				alt=""
+			/>
 			<HeaderContainer>
 				<Link to="/" >
 					<MainButton>

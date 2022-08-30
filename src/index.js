@@ -7,6 +7,11 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 
+//Redux
+import { Provider as ReduxProvider } from 'react-redux';
+import { store } from 'reduxStore';
+
+
 //React router
 import {
   BrowserRouter,
@@ -23,9 +28,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 //Render component in strict mode
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ReduxProvider store={store} >
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ReduxProvider>
   </React.StrictMode>
 );
 

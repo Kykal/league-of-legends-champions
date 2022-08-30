@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+
+//Redux
+import { useDispatch } from 'react-redux';
+import { changeBackgroundUrl } from 'features/backgroundUrl';
 
 //React router
 import { useNavigate } from 'react-router-dom';
@@ -13,6 +17,10 @@ import RunaterraIcon		from 'assets/runaterraIcon.png';
 import styled from 'styled-components';
 
 const TableContainer = styled.div`
+
+	position: relative;
+	z-index: 1;
+
 	padding-top: 2em;
 	overflow: hidden;
 `;
@@ -157,11 +165,17 @@ export default ChampionsTable; //Export main component
 const TableBodyContent = ({champions}) => {
 
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	//Description. What does this?
 	const sendToChampionPage = (championName, version) => {
 		navigate(`./${version}/${championName}`)
 	};
+
+
+	useEffect( () => {
+		dispatch( changeBackgroundUrl("") );
+	}, [dispatch] );
 
 	return(
 		<>

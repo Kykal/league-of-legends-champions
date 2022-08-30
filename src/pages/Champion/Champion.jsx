@@ -6,6 +6,11 @@ import RiotPointsIcon from 'assets/riotPointsIcon.png';
 import BlueEssenceIcon from 'assets/blueEssenceIcon.png';
 
 
+//Redux
+import { useDispatch } from 'react-redux'
+import { changeBackgroundUrl } from 'features/backgroundUrl';
+
+
 //Axios
 import axios from 'axios';
 
@@ -24,6 +29,11 @@ import styled from 'styled-components';
 
 const ChampionContainer = styled.article`
 	background-color: var(--blue);
+
+	position: relative;
+	z-index: 1;
+
+	box-shadow: 0 0 2em 0.125em black;
 
 	img#champion-splashart {
 		width: 100%;
@@ -120,6 +130,9 @@ const ChampionContainer = styled.article`
 //Main component content
 const Champion = () => {
 	
+	//Redux
+	const dispatch = useDispatch();
+
 	//React router
 	const navigate = useNavigate();
 
@@ -141,7 +154,11 @@ const Champion = () => {
 				navigate("/");
 			}
 
+			
 			data = data.data.data[champion];
+			
+			dispatch( changeBackgroundUrl(`https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion}_0.jpg`) )
+
 
 			const dataSkins = data.skins;
 			const skinsArray = [
@@ -149,6 +166,8 @@ const Champion = () => {
 					num: 0,
 					id: parseInt(data.skins[0].id),
 					name: "Default",
+					loadingScreen: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion}_0.jpg`,
+					splashart: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion}_0.jpg`
 				}
 			];
 			dataSkins.shift()
@@ -159,7 +178,9 @@ const Champion = () => {
 						return {
 							num: parseInt(skinData.num),
 							id: parseInt(skinData.id),
-							name: skinData.name
+							name: skinData.name,
+							loadingScreen: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion}_${skinData.num}.jpg`,
+							splashart: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion}_${skinData.num}.jpg`
 						};
 					}
 				)
