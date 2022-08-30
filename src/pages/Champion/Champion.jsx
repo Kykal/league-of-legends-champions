@@ -14,6 +14,11 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
 
+//Custom components
+import Abilities from './Abilities';
+import Skins from './Skins';
+
+
 //Style component
 import styled from 'styled-components';
 
@@ -115,13 +120,14 @@ const ChampionContainer = styled.article`
 //Main component content
 const Champion = () => {
 	
+	//React router
 	const navigate = useNavigate();
 
+	//Get params from URL
 	const { champion, version } = useParams();
 
-	
+	//State
 	const [ championData, setChampionData ] = useState({});
-
 	
 	useEffect( () => {
 		const getChampionData = async () => {
@@ -140,6 +146,7 @@ const Champion = () => {
 			const dataSkins = data.skins;
 			const skinsArray = [
 				{
+					num: 0,
 					id: parseInt(data.skins[0].id),
 					name: "Default",
 				}
@@ -150,6 +157,7 @@ const Champion = () => {
 				...dataSkins.map(
 					skinData => {
 						return {
+							num: parseInt(skinData.num),
 							id: parseInt(skinData.id),
 							name: skinData.name
 						};
@@ -196,7 +204,6 @@ const Champion = () => {
 		getChampionData();
 	}, [] );
 
-
 	//Component render
 	return (
 		<ChampionContainer>
@@ -225,9 +232,8 @@ const Champion = () => {
 				</p>
 			</section>
 			<hr />
-			<section className="padded" >
-				b
-			</section>
+			<Abilities abilities={championData.abilities} />
+			<Skins skins={championData.skins} />
 		</ChampionContainer>
 	);
 };
