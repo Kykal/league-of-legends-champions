@@ -19,6 +19,9 @@ import championIcon from 'assets/championIcon.png';
 
 const HeaderContainer = styled.header`
 
+	position: relative;
+	z-index: 1;
+
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -69,6 +72,16 @@ const Header = () => {
 	//Component render
 	return (
 		<>
+			<img id="background-img"
+				src=""
+				alt="" 
+				style={{
+					position: "absolute",
+					zIndex: 0,
+					width: "100%",
+					height: "auto"
+				}}
+			/>
 			<HeaderContainer>
 				<Link to="/" >
 					<MainButton>

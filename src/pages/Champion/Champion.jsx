@@ -25,6 +25,11 @@ import styled from 'styled-components';
 const ChampionContainer = styled.article`
 	background-color: var(--blue);
 
+	position: relative;
+	z-index: 1;
+
+	box-shadow: 0 0 2em 0.125em black;
+
 	img#champion-splashart {
 		width: 100%;
 		height: auto;

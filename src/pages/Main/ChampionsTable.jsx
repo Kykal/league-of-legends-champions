@@ -13,6 +13,10 @@ import RunaterraIcon		from 'assets/runaterraIcon.png';
 import styled from 'styled-components';
 
 const TableContainer = styled.div`
+
+	position: relative;
+	z-index: 1;
+
 	padding-top: 2em;
 	overflow: hidden;
 `;

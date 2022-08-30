@@ -6,6 +6,10 @@ import styled from 'styled-components';
 
 
 const FormSx = styled.form`
+
+	position: relative;
+	z-index: 1;
+
 	min-height: 2.5em;
 	height: 2.5em;
 	max-height: 2.5em;
