@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
+
+//Redux
+import { useDispatch } from 'react-redux';
+import { changeBackgroundUrl } from 'features/backgroundUrl';
 
 //React router
 import { useNavigate } from 'react-router-dom';
@@ -161,11 +165,17 @@ export default ChampionsTable; //Export main component
 const TableBodyContent = ({champions}) => {
 
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 
 	//Description. What does this?
 	const sendToChampionPage = (championName, version) => {
 		navigate(`./${version}/${championName}`)
 	};
+
+
+	useEffect( () => {
+		dispatch( changeBackgroundUrl("") );
+	}, [dispatch] );
 
 	return(
 		<>

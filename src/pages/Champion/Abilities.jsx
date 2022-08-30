@@ -25,8 +25,6 @@ const SectionSx = styled.section`
 		padding: 0.75em;
 
 		div {
-			flex-grow: 1;
-
 			text-align: center;
 
 			p {
@@ -34,9 +32,14 @@ const SectionSx = styled.section`
 				padding-top: 0.75em;
 			}
 		}
-
+		
 		div#champion_abilities__p {
 			border-right: 1px solid var(--ultra-light-blue);
+			width: 25%;
+		}
+
+		.ability {
+			width: calc(75%/4);
 		}
 	}
 `;
@@ -57,22 +60,22 @@ const Abilities = ({abilities}) => {
 							<img src={abilities.p.iconUrl} alt="" />
 							<p>{abilities.p.name}</p>
 						</div>
-						<div id="champion_abilities__q" >
+						<div id="champion_abilities__q" className="ability" >
 							<p>Q</p>
 							<img src={abilities.q.iconUrl} alt="" />
 							<p>{abilities.q.name}</p>
 						</div>
-						<div id="champion_abilities__w" >
+						<div id="champion_abilities__w" className="ability" >
 							<p>W</p>
 							<img src={abilities.w.iconUrl} alt="" />
 							<p>{abilities.w.name}</p>
 						</div>
-						<div id="champion_abilities__e" >
+						<div id="champion_abilities__e" className="ability" >
 							<p>E</p>
 							<img src={abilities.e.iconUrl} alt="" />
 							<p>{abilities.e.name}</p>
 						</div>
-						<div id="champion_abilities__r" >
+						<div id="champion_abilities__r" className="ability" >
 							<p>R</p>
 							<img src={abilities.r.iconUrl} alt="" />
 							<p>{abilities.r.name}</p>

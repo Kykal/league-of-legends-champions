@@ -1,6 +1,8 @@
 import React from 'react';
 
 
+//Redux
+import { useSelector } from 'react-redux';
 
 //React router
 import {
@@ -71,16 +73,21 @@ const Background = styled.img`
 	z-index: 0;
 	width: 100%;
 	height: auto;
+
+	filter: blur(5px);
 `;
 
 //Main component content
 const Header = () => {
 
+	const bgUrl = useSelector( state => state.backgroundUrl );
+
+
 	//Component render
 	return (
 		<>
 			<Background id="background-img"
-				src={""}
+				src={bgUrl}
 				alt=""
 			/>
 			<HeaderContainer>
