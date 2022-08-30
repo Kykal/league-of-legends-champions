@@ -81,7 +81,7 @@ const Header = () => {
 		<>
 			<Background id="background-img"
 				src={""}
-				alt="Background"
+				alt=""
 			/>
 			<HeaderContainer>
 				<Link to="/" >
