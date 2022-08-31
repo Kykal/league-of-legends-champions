@@ -35,7 +35,8 @@ const Main = () => {
 
 				const temporalChampionData = {
 					key: actualChampion.key,
-					name: actualChampion.id,
+					name: actualChampion.name,
+					id: actualChampion.id,
 					title: actualChampion.title,
 					img: `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${actualChampion.id}.png`,
 					version: version

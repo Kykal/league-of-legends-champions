@@ -180,7 +180,13 @@ const TableBodyContent = ({champions}) => {
 	return(
 		<>
 			{champions.map( champion => (
-				<tr key={champion.key} data-champion={champion.name} id={`champion__${champion.name}`} className="champion" onClick={() => sendToChampionPage(champion.name, champion.version)} >
+				<tr 
+					key={champion.key} 
+					data-champion={champion.name} 
+					id={`champion__${champion.name}`} 
+					className="champion" 
+					onClick={() => sendToChampionPage(champion.id, champion.version)}
+				>
 					<td id="champion-icon__container" >
 						<div>
 							<img id="champion-icon" src={champion.img} alt={`${champion.name} icon`} loading="lazy" />
