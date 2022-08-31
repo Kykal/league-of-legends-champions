@@ -82,7 +82,6 @@ const SearchChampion = ({championsNames, version}) => {
 	//Query champion 
 	const onSubmitHandler = (event) => {
 		event.preventDefault();
-		let timer;
 
 		//Look for coincidences, if there are, obtain its result
 		const [query] = championsNames.filter( champion => champion.name === searchValue );
