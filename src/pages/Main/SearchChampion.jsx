@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
 
+//React router
+import { useNavigate } from 'react-router-dom';
+
+
 //Style components
 import styled from 'styled-components';
 
@@ -58,35 +62,79 @@ const ButtonSx = styled.button`
 	}
 `;
 
+const ErrorMessage = styled.p`
+	padding-left: 0.5em;
+	padding-top: 0.5em;
+	color: rgba( 255, 0, 0, 0.66 );
+`;
+
 
 //Main component content
-const SearchChampion = ({championsNames}) => {
+const SearchChampion = ({championsNames, version}) => {
 
+	//React router
+	const navigate = useNavigate();
+
+	//State
+	const [ isError, setIsError ] = useState(false);
 	const [ searchValue, setSearchValue ] = useState("");
-
+	
 	//Query champion 
 	const onSubmitHandler = (event) => {
 		event.preventDefault();
+		let timer;
+
+		//Look for coincidences, if there are, obtain its result
+		const [query] = championsNames.filter( champion => champion.name === searchValue );
+
+		if(!query) {
+			setIsError(true);
+			return;
+		};
+		
+		//Query the id of the coincidental name
+		navigate(`${version}/${query.id}`);
 	};
 
 	//Update input state
 	const searchValueHandler = (event) => {
-		setSearchValue(event.target.value);
+		
+		//Save constant;
+		const newValue = event.target.value;
+
+		//Update state
+		setSearchValue(newValue);
+
+		//Look up for coincidences
+		const [query] = championsNames.filter( champion => champion.name === newValue );
+
+		//If input value does not coincide with any champion name, keep error true
+		if(!query) return;
+
+		//If input value coincides with any champion, remove error
+		setIsError(false);
 	};
 
 	//Component render
 	return (
-		<FormSx onSubmit={onSubmitHandler} >
-			<InputSx type="text" id="search_champion" list="champions" placeholder="Champion" value={searchValue} onChange={searchValueHandler} />
-			<datalist id="champions" >
-				{championsNames.map( champion => (
-					<option key={champion} value={champion}>{champion}</option>
-				) )}
-			</datalist>
-			<ButtonSx>
-				Search
-			</ButtonSx>
-		</FormSx>
+		<>
+			<FormSx onSubmit={onSubmitHandler} >
+				<InputSx type="text" id="search_champion" list="champions" placeholder="Champion" value={searchValue} onChange={searchValueHandler} />
+				<datalist id="champions" >
+					{championsNames.map( champion => (
+						<option key={champion.id} value={champion.name}>{champion.name}</option>
+					) )}
+				</datalist>
+				<ButtonSx onClick={onSubmitHandler} >
+					Search
+				</ButtonSx>
+			</FormSx>
+			{isError && (
+				<ErrorMessage>
+					Please input a valid champion name.
+				</ErrorMessage>
+			)}
+		</>
 	);
 };
 
