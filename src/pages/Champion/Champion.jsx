@@ -168,7 +168,7 @@ const Champion = () => {
 					num: 0,
 					id: parseInt(data.skins[0].id),
 					name: "Default",
-					loadingScreen: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion}_0.jpg`,
+					loadingScreen: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion}_0.jpg`,
 					splashart: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion}_0.jpg`
 				}
 			];
@@ -181,7 +181,7 @@ const Champion = () => {
 							num: parseInt(skinData.num),
 							id: parseInt(skinData.id),
 							name: skinData.name,
-							loadingScreen: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion}_${skinData.num}.jpg`,
+							loadingScreen: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion}_${skinData.num}.jpg`,
 							splashart: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion}_${skinData.num}.jpg`
 						};
 					},
