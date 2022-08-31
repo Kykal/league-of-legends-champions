@@ -20,8 +20,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 
 //Custom components
-import Abilities from './Abilities';
-import Skins from './Skins';
+import Abilities	from './Abilities';
+import Skins		from './Skins';
 
 
 //Style component
