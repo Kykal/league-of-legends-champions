@@ -230,7 +230,7 @@ const Champion = () => {
 
 		getChampionData();
 		dispatch( resetValues() );
-	}, [champion, dispatch, navigate, version, championData] );
+	}, [champion, dispatch, navigate, version] );
 
 	//Component render
 	return (
