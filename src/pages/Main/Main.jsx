@@ -15,6 +15,7 @@ const Main = () => {
 	//States
 	const [ championsNameAutocomplete, setChampionsNameAutocomplete ] = useState([]);
 	const [ championsList, setChampionsList ] = useState([]);
+	const [ version, setVersion ] = useState("");
 
 	//On component mount
 	useEffect( () => {
@@ -31,7 +32,10 @@ const Main = () => {
 
 			for( const championName in champions ){
 				const actualChampion = champions[championName];
-				newChampionsNameAutocomplete.push(championName);
+				newChampionsNameAutocomplete.push({
+					id: actualChampion.id,
+					name: actualChampion.name
+				});
 
 				const temporalChampionData = {
 					key: actualChampion.key,
@@ -44,6 +48,7 @@ const Main = () => {
 				newChampionList.push(temporalChampionData);
 			}
 
+			setVersion(version);
 			setChampionsNameAutocomplete(newChampionsNameAutocomplete);
 			setChampionsList(newChampionList);
 		}
@@ -59,7 +64,7 @@ const Main = () => {
 	//Component render
 	return (
 		<>
-			<SearchChampion championsNames={championsNameAutocomplete} />
+			<SearchChampion championsNames={championsNameAutocomplete} version={version} />
 			<ChampionsTable champions={championsList} />
 		</>
 	);
