@@ -230,38 +230,42 @@ const Champion = () => {
 
 		getChampionData();
 		dispatch( resetValues() );
-	}, [champion, dispatch, navigate, version] );
+	}, [champion, dispatch, navigate, version, championData] );
 
 	//Component render
 	return (
 		<ChampionContainer>
-			<img id="champion-splashart" src={championData.splashartUrl} alt={`${championData.name} splashrt`} />
-			<section id="champion-basic-info" className="padded" >
-				<div className="header">
-					<div id="champion-name-title__container" >
-						<img id="champion-square-icon" src={championData.squareIconUrl} alt={`${championData.name} square icon`} loading="lazy" />
-						<p id="champion-name-title" >
-							{championData.name}, {championData.title}
+			{Object.keys(championData).length > 0 && (
+				<>
+					<img id="champion-splashart" src={championData.splashartUrl} alt={`${championData.name} splashrt`} />
+					<section id="champion-basic-info" className="padded" >
+						<div className="header">
+							<div id="champion-name-title__container" >
+								<img id="champion-square-icon" src={championData.squareIconUrl} alt={`${championData.name} square icon`} loading="lazy" />
+								<p id="champion-name-title" >
+									{championData.name}, {championData.title}
+								</p>
+							</div>
+							<div id="champion-price" >
+								<div id="champion-price__be" >
+									<img id="blue-essence-icon" src={BlueEssenceIcon} alt="Blue Essence Icon" />
+									<span>4800</span>
+								</div>
+								<div id="champion-price__rp" >
+									<img id="riot-points-icon" src={RiotPointsIcon} alt="Riot Points Icon" />
+									<span>880</span>
+								</div>
+							</div>
+						</div>
+						<p id="champion-lore" >
+							{championData.lore}
 						</p>
-					</div>
-					<div id="champion-price" >
-						<div id="champion-price__be" >
-							<img id="blue-essence-icon" src={BlueEssenceIcon} alt="Blue Essence Icon" />
-							<span>4800</span>
-						</div>
-						<div id="champion-price__rp" >
-							<img id="riot-points-icon" src={RiotPointsIcon} alt="Riot Points Icon" />
-							<span>880</span>
-						</div>
-					</div>
-				</div>
-				<p id="champion-lore" >
-					{championData.lore}
-				</p>
-			</section>
-			<hr />
-			<Abilities abilities={championData.abilities} />
-			<Skins skins={championData.skins} len={skinsLength} />
+					</section>
+					<hr />
+					<Abilities abilities={championData.abilities} />
+					<Skins skins={championData.skins} len={skinsLength} />
+				</>
+			)}
 		</ChampionContainer>
 	);
 };
