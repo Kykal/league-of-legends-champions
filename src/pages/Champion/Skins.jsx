@@ -1,4 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+
+//Redux
+import { useSelector, useDispatch }			from 'react-redux';
+import { prevSkin, nextSkin, updateMax }	from 'features/carouselValue.js';
+
+//Custom components
+import Skin from './Skin.jsx';
 
 
 //Style components
@@ -38,15 +46,11 @@ const SectionSx = styled.section`
 
 const CarouselContainer = styled.div`
 	position: relative;
-
-	overflow: auto;
+	height: 25em;
+	
+	overflow: hidden;
 
 	display: flex;
-
-	div.skin-container {
-		width: 100%;
-		flex-shrink: 0;
-	}
 
 	h3.skin-title {
 		color: var(--dark-gold);
@@ -68,11 +72,31 @@ const CarouselContainer = styled.div`
 			width: 93%;
 		}
 	}
-
 `;
 
+
 //Main component content
-const Skins = ({skins}) => {
+const Skins = ({skins, len}) => {
+
+	const carouselValue = useSelector( state => state.carouselValue );
+
+	const dispatch = useDispatch();
+
+	useEffect( () => {
+		const newMax = (len-1)*(-100);
+		newMax !== 0 && dispatch( updateMax(newMax) )
+	}, [len, dispatch] );
+
+	//Slide carousel to previous skin (to the left)
+	const previousSkinHandler = () => {
+		dispatch( prevSkin() );
+	};
+
+	//Slide carousel to previous skin (to the left)
+	const nextSkinHandler = () => {
+		dispatch( nextSkin() );
+	};
+
 	//Component render
 	return (
 		<>
@@ -80,7 +104,11 @@ const Skins = ({skins}) => {
 				<SectionSx>
 					<h2>Skins</h2>
 					<div className="box">
-						<Carousel skins={skins} />
+						<CarouselContainer id="carousel" >
+							{skins.map( (skin, key) => <Skin skin={skin} id={key} key={key} /> )}
+						</CarouselContainer>
+						<button onClick={previousSkinHandler} disabled={ carouselValue.actual === 0 ? true : false } >PREV</button>
+						<button onClick={nextSkinHandler} disabled={ carouselValue.actual === carouselValue.max ? true : false  } >NEXT</button>
 					</div>
 				</SectionSx>
 			)}
@@ -90,35 +118,3 @@ const Skins = ({skins}) => {
 
 
 export default Skins; //Export main component
-
-
-//LOCAL COMPONENTS
-const Carousel = ({skins}) => {
-
-	return (
-		<CarouselContainer id="carousel" >
-			{skins.map( skin => (
-				<div id={skin.name} className="skin-container" key={skin.num} >
-					<h3 id={`${skin.name}-skin__title`} 
-						className="skin skin-title"
-					>
-						{skin.name}
-					</h3>
-					<div className="images-container">
-						<img id={`${skin.name}-skin__loading-screen`}
-							src={skin.loadingScreen}
-							alt={`${skin.name} loading screen`}
-
-							className="skin-loading-screen"
-						/>
-						<img id={`${skin.name}-skin__splashart`}
-							src={skin.splashart}
-							alt={`${skin.name} splashart`}
-							className="skin-splashart"
-						/>
-					</div>
-				</div>
-			) )}
-		</CarouselContainer>
-	);
-};

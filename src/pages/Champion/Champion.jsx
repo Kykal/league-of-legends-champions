@@ -7,8 +7,9 @@ import BlueEssenceIcon from 'assets/blueEssenceIcon.png';
 
 
 //Redux
-import { useDispatch } from 'react-redux'
-import { changeBackgroundUrl } from 'features/backgroundUrl';
+import { useDispatch }				from 'react-redux'
+import { changeBackgroundUrl }	from 'features/backgroundUrl';
+import { resetValues }				from 'features/carouselValue';
 
 
 //Axios
@@ -141,6 +142,7 @@ const Champion = () => {
 
 	//State
 	const [ championData, setChampionData ] = useState({});
+	const [ skinsLength, setSkinsLength ] = useState(0);
 	
 	useEffect( () => {
 		const getChampionData = async () => {
@@ -182,8 +184,8 @@ const Champion = () => {
 							loadingScreen: `http://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion}_${skinData.num}.jpg`,
 							splashart: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion}_${skinData.num}.jpg`
 						};
-					}
-				)
+					},
+				),
 			);	
 			
 			const championData = {
@@ -219,11 +221,14 @@ const Champion = () => {
 				},
 				skins: skinsArray
 			};
+
+			setSkinsLength(skinsArray.length);
 			setChampionData(championData);
 		};
 
 		getChampionData();
-	}, [] );
+		dispatch( resetValues() );
+	}, [champion, dispatch, navigate, version] );
 
 	//Component render
 	return (
@@ -254,7 +259,7 @@ const Champion = () => {
 			</section>
 			<hr />
 			<Abilities abilities={championData.abilities} />
-			<Skins skins={championData.skins} />
+			<Skins skins={championData.skins} len={skinsLength} />
 		</ChampionContainer>
 	);
 };
