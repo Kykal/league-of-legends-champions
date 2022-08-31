@@ -226,6 +226,8 @@ const Champion = () => {
 			setChampionData(championData);
 		};
 
+		document.title = `${champion} - League of Legends Champions`;
+
 		getChampionData();
 		dispatch( resetValues() );
 	}, [champion, dispatch, navigate, version] );

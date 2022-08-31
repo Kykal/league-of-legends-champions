@@ -7,7 +7,8 @@ import { useSelector } from 'react-redux';
 //React router
 import {
 	Outlet,
-	Link
+	Link,
+	NavLink
 } from 'react-router-dom';
 
 
@@ -31,12 +32,25 @@ const HeaderContainer = styled.header`
 
 	height: 4em;
 	padding: 1.25em;
+
+
+	a#disclaimer {
+		font-size: large;
+		text-decoration: none;
+		color: var(--ultra-light-blue);
+		transition-duration: 125ms;
+	}
+
+	a#disclaimer.active {
+		color: var(--gold);
+	}
 `;
 
 const MainSx = styled.main`
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
+
 	padding-bottom: 4em;
 `;
 
@@ -47,6 +61,10 @@ const Container = styled.div`
 
 	margin-left: 2em;
 	margin-right: 2em;
+
+	a#disclaimer {
+
+	}
 `;
 
 const MainButton = styled.button`
@@ -99,6 +117,9 @@ const Header = () => {
 						/>
 					</MainButton>
 				</Link>
+				<NavLink id="disclaimer" to="/disclaimer" activeclassname="active" >
+					Disclaimer
+				</NavLink>
 			</HeaderContainer>
 			<MainSx>
 				<Container>

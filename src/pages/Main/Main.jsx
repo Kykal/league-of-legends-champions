@@ -47,6 +47,8 @@ const Main = () => {
 			setChampionsList(newChampionList);
 		}
 
+		document.title = "League of Legends Champions"
+
 		getChampionsList();
 	}, [] );
 

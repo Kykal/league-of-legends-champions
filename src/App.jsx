@@ -12,8 +12,9 @@ import {
 import Header from 'components/Header';
 
 //Pages
-import Main from 'pages/Main';
-import Champion from 'pages/Champion';
+import Main			from 'pages/Main';
+import Champion	from 'pages/Champion';
+import Disclaimer	from 'pages/Disclaimer';
 
 
 //Main component content
@@ -26,6 +27,7 @@ const App = () => {
 			<Route path="/" element={<Header />} >
 				<Route path="/" exact element={<Main />} />
 				<Route path="/:version/:champion" element={<Champion />} />
+				<Route path="/disclaimer" element={<Disclaimer />} />
 				<Route path="*" element={<Navigate to="/" replace />} />
 			</Route>
 		</Routes>
