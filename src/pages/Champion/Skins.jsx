@@ -1,4 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+
+//Redux
+import { useSelector, useDispatch }			from 'react-redux';
+import { prevSkin, nextSkin, updateMax }	from 'features/carouselValue.js';
+
+//Custom components
+import Skin from './Skin.jsx';
 
 
 //Style components
@@ -17,17 +25,9 @@ const SectionSx = styled.section`
 		padding: 1.5em;
 	}
 
-	h3#skin-name {
-		color: var(--dark-gold);
-		font-size: larger;
-		font-weight: normal;
-		text-align: center;
-		
-		padding-bottom 0.35em;
-
-	}
-
 	div#champion-skins {
+
+		width: 100%;
 
 		display: flex;
 
@@ -44,10 +44,58 @@ const SectionSx = styled.section`
 	}
 `;
 
-//Main component content
-const Skins = ({skins}) => {
+const CarouselContainer = styled.div`
+	position: relative;
+	height: 25em;
+	
+	overflow: hidden;
 
-	console.log( skins );
+	display: flex;
+
+	h3.skin-title {
+		color: var(--dark-gold);
+		font-size: larger;
+		font-weight: normal;
+		text-align: center;
+		
+		padding-bottom 0.35em;
+	}
+
+	div.images-container {
+		display: flex;
+		
+		img.skin-loading-screen{
+			width: 30%;
+		}
+
+		img.skin-splashart {
+			width: 93%;
+		}
+	}
+`;
+
+
+//Main component content
+const Skins = ({skins, len}) => {
+
+	const carouselValue = useSelector( state => state.carouselValue );
+
+	const dispatch = useDispatch();
+
+	useEffect( () => {
+		const newMax = (len-1)*(-100);
+		newMax !== 0 && dispatch( updateMax(newMax) )
+	}, [len, dispatch] );
+
+	//Slide carousel to previous skin (to the left)
+	const previousSkinHandler = () => {
+		dispatch( prevSkin() );
+	};
+
+	//Slide carousel to previous skin (to the left)
+	const nextSkinHandler = () => {
+		dispatch( nextSkin() );
+	};
 
 	//Component render
 	return (
@@ -56,11 +104,11 @@ const Skins = ({skins}) => {
 				<SectionSx>
 					<h2>Skins</h2>
 					<div className="box">
-						<h3 id="skin-name" >{skins[1].name}</h3>
-						<div id="champion-skins">
-							<img id="loadingScreen" src={skins[1].loadingScreen} alt="" />
-							<img id="splashart" src={skins[1].splashart} alt="" />
-						</div>
+						<CarouselContainer id="carousel" >
+							{skins.map( (skin, key) => <Skin skin={skin} id={key} key={key} /> )}
+						</CarouselContainer>
+						<button onClick={previousSkinHandler} disabled={ carouselValue.actual === 0 ? true : false } >PREV</button>
+						<button onClick={nextSkinHandler} disabled={ carouselValue.actual === carouselValue.max ? true : false  } >NEXT</button>
 					</div>
 				</SectionSx>
 			)}
