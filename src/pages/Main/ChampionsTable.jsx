@@ -204,13 +204,13 @@ const TableBodyContent = ({champions}) => {
 					<td className='flex-center' >
 						<div>
 							<img src={BlueEssenceIcon} alt="Blue Essence Icon" id="price-icon" />
-							1234
+							4800
 						</div>
 					</td>
 					<td className='flex-center' >
 						<div>
 							<img src={RiotPointsIcon} alt="Blue Essence Icon" id="price-icon" className="riotPoints" /> 
-							567
+							880
 						</div>
 					</td>
 				</tr>

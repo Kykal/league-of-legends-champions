@@ -69,12 +69,12 @@ const Disclaimer = () => {
 		<Box>
 			<div id="disclaimer-header">
 				<h1 id="general-label" >DISCLAIMER</h1>
-				<p id="last-update" ><strong>Last updated August 31, 2022</strong></p>
+				<p id="last-update" ><strong>Last updated September 01, 2022</strong></p>
 			</div>
 			<div id="disclaimer-website-disclaimer">
 				<h2>WEBSITE DISCLAIMER</h2>
 				<p>
-					The information provided by <strong>Riot Games, Inc.</strong> ("we", "us", "our")
+					The information provided by <strong>Kykal</strong> ("we", "us", "our")
 					on <Link to="https://league-of-legends-champions-data-kykal.vercel.app/">https://league-of-legends-champions-data-kykal.vercel.app/</Link> (the "Site")
 					is for general information purposes only. All information on the Site  is provided in good faith,
 					however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity,
