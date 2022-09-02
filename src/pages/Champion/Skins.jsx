@@ -189,6 +189,7 @@ const Skins = ({skins, len}) => {
 export default Skins; //Export main component
 
 
+//Local components
 const Option = ({index}) => {
 
 	const carouselValue = useSelector( state => state.carouselValue );
