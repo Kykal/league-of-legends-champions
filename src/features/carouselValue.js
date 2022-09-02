@@ -14,6 +14,8 @@ export const carouselSlice = createSlice({
 
 		updateMax: (state, action) => void(state.max = action.payload),
 
+		updateValue: (state, action) => void(state.actual = action.payload),
+
 		resetValues: (state, action) => {
 			const newValues = {
 				min: 0,
@@ -30,7 +32,8 @@ export const {
 	nextSkin,
 	prevSkin,
 	updateMax,
-	resetValues
+	resetValues,
+	updateValue
 } = carouselSlice.actions;
 
 export default carouselSlice.reducer;
