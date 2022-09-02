@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 
 //Redux
 import { useSelector, useDispatch }			from 'react-redux';
-import { prevSkin, nextSkin, updateMax }	from 'features/carouselValue.js';
+import { prevSkin, nextSkin, updateMax, updateValue }	from 'features/carouselValue.js';
 
 
 //Icons
@@ -93,7 +93,10 @@ const Button = styled.button`
 
 	padding: 0.25em;
 
-	margin: 0.75em;
+	margin-top: 0.75em;
+	margin-bottom: 0.75em;
+	margin-left: 0.25em;
+	margin-right: 0.25em;
 
 	transition-duration: 125ms;
 
@@ -114,18 +117,22 @@ const Button = styled.button`
 	}
 `;
 
-const Option = styled.button`
+const OptionSx = styled.button`
 	border-radius: 50%;
 	background: none;
 	border: 0.15em solid var(--dark-gold);
 
 	padding: 0.5em;
-	margin-bottom: 0.25em;
+	margin: 0.25em;
 
 	cursor: pointer;
 
 	:hover {
-		border: 0.15em solid var(--light-gold);
+		border: 0.15em solid var(--dark-gold);
+	}
+
+	&.active {
+		background-color: var(--dark-gold);
 	}
 `;
 
@@ -136,7 +143,6 @@ const Skins = ({skins, len}) => {
 
 	const dispatch = useDispatch();
 
-	const [ actualSkinIndex, setActualSkinIndex ] = useState(0);
 
 	useEffect( () => {
 		const newMax = (len-1)*(-100);
@@ -145,13 +151,11 @@ const Skins = ({skins, len}) => {
 
 	//Slide carousel to previous skin (to the left)
 	const previousSkinHandler = () => {
-		setActualSkinIndex( prevState => prevState - 1 );
 		dispatch( prevSkin() );
 	};
 
 	//Slide carousel to previous skin (to the left)
 	const nextSkinHandler = () => {
-		setActualSkinIndex( prevState => prevState + 1 );
 		dispatch( nextSkin() );
 	};
 
@@ -166,11 +170,11 @@ const Skins = ({skins, len}) => {
 							{skins.map( (skin, key) => <Skin skin={skin} id={key} key={key} /> )}
 						</CarouselContainer>
 						<div id="buttons-container">
-							<Button onClick={previousSkinHandler} disabled={ carouselValue.actual === 0 ? true : false } >
+							<Button id="previous-skin" onClick={previousSkinHandler} disabled={ carouselValue.actual === 0 ? true : false } >
 								<FiArrowLeftCircle />
 							</Button>
-							<Option />
-							<Button onClick={nextSkinHandler} disabled={ carouselValue.actual === carouselValue.max ? true : false  } >
+							{[...Array(len)].map( (option, index) => <Option key={index} index={index} /> )}
+							<Button id="next-skin" onClick={nextSkinHandler} disabled={ carouselValue.actual === carouselValue.max ? true : false  } >
 								<FiArrowRightCircle />
 							</Button>
 						</div>
@@ -183,3 +187,28 @@ const Skins = ({skins, len}) => {
 
 
 export default Skins; //Export main component
+
+
+const Option = ({index}) => {
+
+	const carouselValue = useSelector( state => state.carouselValue );
+	const dispatch = useDispatch();
+
+	const thisSkinValue = (index*100)*(-1);
+
+	const actualSkin = Math.abs(carouselValue.actual)/100;
+
+	//Move to selected skin
+	const onSelectThisSkin = () => {
+		dispatch( updateValue(thisSkinValue) );
+	};
+
+	return (
+		<OptionSx
+			data-value={index}
+			data-actual={actualSkin}
+			className={thisSkinValue === carouselValue.actual ? "active" : ""}
+			onClick={onSelectThisSkin}
+		/>
+	);
+};
