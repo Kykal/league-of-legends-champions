@@ -98,7 +98,7 @@ const Disclaimer = () => {
 				</p>
 				<p className="text-center" >
 					<strong>
-						This web app is not affiliated by any means to Riot Games, Inc.
+						This Site app is not affiliated by any means with Riot Games, Inc.
 					</strong>
 				</p>
 			</div>
