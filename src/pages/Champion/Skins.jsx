@@ -95,8 +95,12 @@ const Button = styled.button`
 
 	margin-top: 0.75em;
 	margin-bottom: 0.75em;
-	margin-left: 0.25em;
-	margin-right: 0.25em;
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	transition-duration: 125ms;
 
@@ -117,22 +121,23 @@ const Button = styled.button`
 	}
 `;
 
-const OptionSx = styled.button`
-	border-radius: 50%;
-	background: none;
-	border: 0.15em solid var(--dark-gold);
+const OptionSx = styled.abbr`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	button {
+		cursor: pointer;
+		padding: 0.5em;
+		margin-left: 0.25em;
+		margin-right: 0.25em;
+		border-radius: 50%;
+		background: none;
+		border: 2px solid var(--dark-gold);
 
-	padding: 0.5em;
-	margin: 0.25em;
-
-	cursor: pointer;
-
-	:hover {
-		border: 0.15em solid var(--dark-gold);
-	}
-
-	&.active {
-		background-color: var(--dark-gold);
+		&.active {
+			background-color: var(--dark-gold);
+		}
 	}
 `;
 
@@ -173,7 +178,7 @@ const Skins = ({skins, len}) => {
 							<Button id="previous-skin" onClick={previousSkinHandler} disabled={ carouselValue.actual === 0 ? true : false } >
 								<FiArrowLeftCircle />
 							</Button>
-							{[...Array(len)].map( (option, index) => <Option key={index} index={index} /> )}
+							{skins.map( (skin, index) => <Option key={index} index={index} skinName={skin.name} /> )}
 							<Button id="next-skin" onClick={nextSkinHandler} disabled={ carouselValue.actual === carouselValue.max ? true : false  } >
 								<FiArrowRightCircle />
 							</Button>
@@ -190,14 +195,12 @@ export default Skins; //Export main component
 
 
 //Local components
-const Option = ({index}) => {
+const Option = ({skinName, index}) => {
 
 	const carouselValue = useSelector( state => state.carouselValue );
 	const dispatch = useDispatch();
 
 	const thisSkinValue = (index*100)*(-1);
-
-	const actualSkin = Math.abs(carouselValue.actual)/100;
 
 	//Move to selected skin
 	const onSelectThisSkin = () => {
@@ -205,11 +208,11 @@ const Option = ({index}) => {
 	};
 
 	return (
-		<OptionSx
-			data-value={index}
-			data-actual={actualSkin}
-			className={thisSkinValue === carouselValue.actual ? "active" : ""}
-			onClick={onSelectThisSkin}
-		/>
+		<OptionSx id={`${skinName} option`} title={skinName}>
+			<button 
+				className={thisSkinValue === carouselValue.actual ? "active" : ""}
+				onClick={onSelectThisSkin}
+			/>
+		</OptionSx>
 	);
 };
