@@ -57,7 +57,7 @@ const _ChampionIcon = ({champion}: TableBodyRow): JSX.Element => {
 				className='p-2'
 			>
 				<Image
-					src={`https://ddragon.leagueoflegends.com/cdn/${champion.version}/img/champion/${champion.imageFull}`}
+					src={`https://ddragon.leagueoflegends.com/cdn/${champion.version}/img/champion/${champion.image.full}`}
 					alt={champion.name}
 					className='border border-black'
 					width={iconSize}

@@ -48,7 +48,9 @@ export const readChampionsPreview = async (version?: string): Promise<ChampionPr
     version: championData.version,
     title: championData.title,
     name: championData.name,
-    imageFull: championData.image.full,
+    image: {
+      full: championData.image.full,
+    },
   }) ); 
 
   return champions;
