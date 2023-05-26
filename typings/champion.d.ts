@@ -55,4 +55,5 @@ export type ChampionPreview = {
 	id: string;
 	name: string;
 	title: string;
+	imageFull: string;
 }

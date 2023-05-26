@@ -41,13 +41,14 @@ export const readChampionsPreview = async (version?: string): Promise<ChampionPr
   };
 
   const resJson = await res.json();
-  const data: Map<string, object> = resJson['data'];
+  const data: Champion[] = resJson['data'];
 
   const champions: ChampionPreview[] = Object.entries(data).map( ([_, championData ]) => ({
     id: championData.id,
     version: championData.version,
     title: championData.title,
     name: championData.name,
+    imageFull: championData.image.full,
   }) ); 
 
   return champions;
