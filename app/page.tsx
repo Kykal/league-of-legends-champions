@@ -16,7 +16,7 @@ const Page = async (): Promise<JSX.Element> => {
 	//Main component render
 	return (
 		<main
-			className="container mx-auto flex flex-col px-10 gap-10"
+			className="container mx-auto max-w-5xl flex flex-col gap-10"
 		>
 			<form
 				className='flex items-center'
