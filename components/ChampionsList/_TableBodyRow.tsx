@@ -94,14 +94,18 @@ const _ChampionRegion = ({champion}: TableBodyRow): JSX.Element => {
 		<td
 			className='text-center flex items-center'
 		>
-			<Image
-				src={runaterraIcon}
-				alt='Runaterra'
-				height={iconSize}
-			/>
-			<p>
-				Runaterra
-			</p>
+			<figure
+				className='w-full h-full flex items-center justify-center gap-2'
+			>
+				<Image
+					src={runaterraIcon}
+					alt='Runaterra'
+					height={iconSize}
+				/>
+				<figcaption>
+					Runaterra
+				</figcaption>
+			</figure>
 		</td>
 	);
 };
