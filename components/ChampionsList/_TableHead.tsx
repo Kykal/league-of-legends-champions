@@ -8,33 +8,7 @@ const TableHead = (): JSX.Element => {
 			<tr
 				className='h-10'
 			>
-				<th rowSpan={2} colSpan={2} >
-					Champion
-				</th>
-				<th
-					rowSpan={2}
-					className='w-40'
-				>
-					Region
-				</th>
-				<th colSpan={2} >
-					Price
-				</th>
-			</tr>
-			
-			<tr
-				className='h-10'
-			>
-				<th
-					className='w-40'
-				>
-					Blue Essence
-				</th>
-				<th
-					className='w-40'
-				>
-					Riot Points
-				</th>
+				<_Champion />
 			</tr>
 		</thead>
 	);
@@ -42,3 +16,17 @@ const TableHead = (): JSX.Element => {
 
 
 export default TableHead; //Export main component
+
+
+
+const _Champion = (): JSX.Element => {
+	//Main component render
+	return (
+		<th
+			rowSpan={2}
+			colSpan={2}
+		>
+			Champion
+		</th>
+	);
+};

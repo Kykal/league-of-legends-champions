@@ -35,8 +35,7 @@ const TableBodyRow = ({champion}: TableBodyRow): JSX.Element => {
 			onClick={onClickHandler}
 		>
 			<_ChampionIcon champion={champion} />
-			<_ChampionCell champion={champion} />
-			<_ChampionRegion champion={champion} />
+			<_ChampionNameTitle champion={champion} />
 		</tr>
 	);
 };
@@ -69,7 +68,7 @@ const _ChampionIcon = ({champion}: TableBodyRow): JSX.Element => {
 	);
 };
 
-const _ChampionCell = ({champion}: TableBodyRow): JSX.Element => {
+const _ChampionNameTitle = ({champion}: TableBodyRow): JSX.Element => {
 	return (
 		<td>
 			<div>
@@ -82,30 +81,6 @@ const _ChampionCell = ({champion}: TableBodyRow): JSX.Element => {
 					{champion.title}
 				</p>
 			</div>
-		</td>
-	);
-};
-
-const _ChampionRegion = ({champion}: TableBodyRow): JSX.Element => {
-	
-	const iconSize: number = 38;
-	
-	return (
-		<td
-			className='text-center flex items-center'
-		>
-			<figure
-				className='w-full h-full flex items-center justify-center gap-2'
-			>
-				<Image
-					src={runaterraIcon}
-					alt='Runaterra'
-					height={iconSize}
-				/>
-				<figcaption>
-					Runaterra
-				</figcaption>
-			</figure>
 		</td>
 	);
 };
