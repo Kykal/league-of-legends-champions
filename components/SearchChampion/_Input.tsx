@@ -25,7 +25,7 @@ const Input = ({ champions, value, onChange }: Input): JSX.Element => {
 				list='champions-input'
 				id='champion-input'
 				placeholder='Search for champion...'
-				className='bg-blue px-3 py-4 grow text-light-gold'
+				className='bg-blue px-3 py-4 grow outline-none'
 			/>
 			<datalist id='champions-input' >
 				{champions.map( (champion: ChampionPreview) => (

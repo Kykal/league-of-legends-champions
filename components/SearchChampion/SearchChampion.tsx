@@ -33,6 +33,13 @@ const SearchChampion = ({champions}: SearchChampion): JSX.Element => {
 	const submitHandler = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
+		const newValue: string = value.trim();
+
+		if( newValue.length === 0 ){
+			return;
+		}
+
+
 		const url: string = `/?query=${value.trim()}`;
 
 		router.push(url);
