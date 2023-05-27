@@ -3,7 +3,7 @@ import { readChampionsPreview } from "@/lib/ddragon/readChampions";
 
 
 //Components
-import SearchChampionInput from "@/components/SearchChampionInput";
+import SearchChampion from "@/components/SearchChampion/SearchChampion";
 
 
 //Typings
@@ -22,7 +22,7 @@ const Page = async (): Promise<JSX.Element> => {
 		<main
 			className="container mx-auto max-w-5xl flex flex-col gap-10"
 		>
-			<SearchChampionInput
+			<SearchChampion
 				champions={champions}
 			/>
 		</main>

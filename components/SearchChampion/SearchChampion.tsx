@@ -7,15 +7,20 @@ import { useRouter } from "next/navigation";
 import { useState, ChangeEvent, FormEvent } from "react";
 
 
+//Components
+import Input from "./_Input";
+
+
 //Typings
 import { ChampionPreview } from "@/typings/champion";
-type SearchChampionInput = {
+import SubmitButton from "./_SubmitButton";
+type SearchChampion = {
 	champions: ChampionPreview[];
-}
+};
 
 
 //Main component content
-const SearchChampionInput = ({champions}: SearchChampionInput): JSX.Element => {
+const SearchChampion = ({champions}: SearchChampion): JSX.Element => {
 
 	const router = useRouter();
 
@@ -44,30 +49,15 @@ const SearchChampionInput = ({champions}: SearchChampionInput): JSX.Element => {
 			className='flex items-center'
 			onSubmit={submitHandler}
 		>
-			<input
+			<Input
 				value={value}
 				onChange={valueHandler}
-
-				autoComplete='true'
-				name='champion-input'
-				list='champions-input'
-				id='champion-input'
-				placeholder='Search for champion...'
-				className='bg-blue px-3 py-4 grow text-light-gold'
+				champions={champions}
 			/>
-			<datalist id='champions-input' >
-				{champions.map( (champion: ChampionPreview) => (
-					<option
-						key={`${champion.name}-datalist-option`}
-						value={champion.name}
-					>
-						{champion.name}
-					</option>
-				) )}
-			</datalist>
+			<SubmitButton />
 		</form>
 	);
 };
 
 
-export default SearchChampionInput; //Export main component
+export default SearchChampion; //Export main component
