@@ -25,10 +25,16 @@ type RootLayout = {
 
 
 export default function RootLayout({ children }: RootLayout) {
+
+  const background: string = 'bg-dark-blue';
+  const text: string = 'text-custom-white';
+  const position: string = 'relative';
+  const display: string = 'flex flex-col';
+
   return (
     <html lang="en">
       <body
-        className={`${roboto.className} bg-dark-blue text-custom-white`}
+        className={`${roboto.className} ${background} ${text} ${position} ${display}`}
       >
         <HeaderNavbar />
         {children}
