@@ -15,7 +15,7 @@ const roboto = Roboto({
 
 
 //Components
-import HeaderNavbar from '@/components/Navbar';
+import HeaderNavbar from '@/components/Header';
 
 
 //Typings
