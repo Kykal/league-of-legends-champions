@@ -16,7 +16,7 @@ const ChampionDisplay = ({ champion }: ChampionDisplay): JSX.Element => {
 	const version: URLSearchParams = new URLSearchParams({
 		version: champion.version,
 	});
-	const href: string = `/champion/${champion.id.toLowerCase()}?${version}`;
+	const href: string = `/champion/${champion.id}?${version}`;
 	const src: string = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`;
 	const alt: string = `${champion.name}-loading-screen`;
 	const width: number = 308;
