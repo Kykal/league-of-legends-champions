@@ -54,8 +54,4 @@ export type ChampionPreview = {
 	version: string;
 	id: string;
 	name: string;
-	title: string;
-	image: {
-		full: string;
-	};
 };
