@@ -1,6 +1,6 @@
 //NextJS
 'use client';
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
 
 //React
@@ -22,7 +22,10 @@ type SearchChampion = {
 //Main component content
 const SearchChampion = ({champions}: SearchChampion): JSX.Element => {
 
+	//NextJS
 	const router = useRouter();
+	const pathname = usePathname();
+	const searchParams = useSearchParams();
 
 
 	//States
@@ -39,8 +42,11 @@ const SearchChampion = ({champions}: SearchChampion): JSX.Element => {
 			return;
 		}
 
+		const newQuery = new URLSearchParams({
+			query: newValue,
+		});
 
-		const url: string = `/?query=${value.trim()}`;
+		const url: string = `${pathname}?${newQuery}`;
 
 		router.push(url);
 	};
@@ -61,7 +67,9 @@ const SearchChampion = ({champions}: SearchChampion): JSX.Element => {
 				onChange={valueHandler}
 				champions={champions}
 			/>
-			<SubmitButton />
+			<SubmitButton
+				value={value}
+			/>
 		</form>
 	);
 };
