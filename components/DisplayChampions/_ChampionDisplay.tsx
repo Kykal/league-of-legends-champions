@@ -1,6 +1,7 @@
 //NextJS
 import Link		from "next/link";
 import Image	from "next/image";
+import { usePathname } from "next/navigation";
 
 
 //Typings
@@ -13,7 +14,12 @@ type ChampionDisplay = {
 //Main component content
 const ChampionDisplay = ({ champion }: ChampionDisplay): JSX.Element => {
 
-	const href: string = `/champion/${champion.id}`;
+	const pathname = usePathname();
+
+	const version: URLSearchParams = new URLSearchParams({
+		version: champion.version,
+	});
+	const href: string = `/champion/${champion.id.toLowerCase()}?${version}`;
 	const src: string = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`;
 	const alt: string = `${champion.name}-loading-screen`;
 	const width: number = 308;

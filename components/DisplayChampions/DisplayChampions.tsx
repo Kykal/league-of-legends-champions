@@ -29,15 +29,23 @@ const DisplayChampions = (props: DisplayChampions): JSX.Element => {
 
 
 	useEffect( () => {
-		const query = searchParams.get('query');
+		const query = searchParams.get('query')?.toLocaleLowerCase();
 
 		if(!query){
+
+			setChampions(props.champions);
+
 			return;
 		}
 
-		const newValue = props.champions.filter( (champion: ChampionPreview) => champion.name.includes(query) );
+		const newValue = props.champions.filter( (champion: ChampionPreview) => {
+			const lowerCaseChampionName: string = champion.id.toLocaleLowerCase();
+
+			return lowerCaseChampionName.includes(query);
+		} );
 
 		setChampions(newValue);
+
 	}, [searchParams] );
 
 

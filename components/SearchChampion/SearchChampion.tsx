@@ -39,6 +39,7 @@ const SearchChampion = ({champions}: SearchChampion): JSX.Element => {
 		const newValue: string = value.trim();
 
 		if( newValue.length === 0 ){
+			router.push(pathname);
 			return;
 		}
 
@@ -52,7 +53,15 @@ const SearchChampion = ({champions}: SearchChampion): JSX.Element => {
 	};
 
 	const valueHandler = (event: ChangeEvent<HTMLInputElement>) => {
-		setValue(event.target.value);
+
+		const newValue: string = event.target.value;
+		
+		setValue(newValue);
+		
+		if( newValue.trim().length === 0 ){
+			router.push(pathname);
+			return;
+		}
 	};
 
 
