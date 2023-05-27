@@ -3,7 +3,8 @@ import { readChampionsPreview } from "@/lib/ddragon/readChampions";
 
 
 //Components
-import SearchChampion from "@/components/SearchChampion/SearchChampion";
+import SearchChampion		from "@/components/SearchChampion";
+import DisplayChampions	from "@/components/DisplayChampions";
 
 
 //Typings
@@ -20,9 +21,12 @@ const Page = async (): Promise<JSX.Element> => {
 	//Main component render
 	return (
 		<main
-			className="container mx-auto max-w-5xl flex flex-col gap-10"
+			className="container mx-auto max-w-5xl flex flex-col gap-y-10 px-5"
 		>
 			<SearchChampion
+				champions={champions}
+			/>
+			<DisplayChampions
 				champions={champions}
 			/>
 		</main>
