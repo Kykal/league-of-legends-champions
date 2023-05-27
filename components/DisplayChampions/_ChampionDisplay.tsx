@@ -1,7 +1,6 @@
 //NextJS
 import Link		from "next/link";
 import Image	from "next/image";
-import { usePathname } from "next/navigation";
 
 
 //Typings
@@ -13,8 +12,6 @@ type ChampionDisplay = {
 
 //Main component content
 const ChampionDisplay = ({ champion }: ChampionDisplay): JSX.Element => {
-
-	const pathname = usePathname();
 
 	const version: URLSearchParams = new URLSearchParams({
 		version: champion.version,
