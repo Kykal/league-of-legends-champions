@@ -19,6 +19,12 @@ const nextConfig = {
 				hostname: 'ddragon.leagueoflegends.com',
 				port: '',
 				pathname: '/cdn/img/champion/splash/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'ddragon.leagueoflegends.com',
+				port: '',
+				pathname: '/cdn/**/img/champion/**',
 			}
 		],
 	},

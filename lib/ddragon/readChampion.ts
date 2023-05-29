@@ -18,9 +18,7 @@ const readChampion = async (champion: string, version?: string): Promise<Champio
 
 	const href: string = `http://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion/${champion}.json`;
 
-	const res = await fetch(href, {
-		cache: 'no-store',
-	});
+	const res = await fetch(href);
 
 	if( !res.ok ){
 		throw new Error('Failed to fetch champion.');
@@ -28,7 +26,12 @@ const readChampion = async (champion: string, version?: string): Promise<Champio
 
 	const json = await res.json();
 
-	return json['data'][champion];
+	const newValue: Champion = {
+		...json['data'][champion],
+		version,
+	}
+
+	return newValue;
 };
 
 
