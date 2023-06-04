@@ -4,6 +4,7 @@ type Champion = {
 	key: string;
 	name: string;
 	title: string;
+	lore: string;
 	blurb: string;
 	info: {
 		attack: number;
