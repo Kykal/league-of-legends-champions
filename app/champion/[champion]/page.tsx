@@ -50,7 +50,7 @@ const Page = async (props: any): Promise<JSX.Element> => {
 				/>
 				</figure>
 				<header
-					className='p-4'
+					className='p-4 flex flex-col gap-4'
 				>
 					<figure
 						className='flex items-center gap-3'
@@ -68,9 +68,9 @@ const Page = async (props: any): Promise<JSX.Element> => {
 						</figcaption>
 					</figure>
 					<p
-						className='text-justified'
+						className='container px-4 text-justify text-lg font-medium leading-9'
 					>
-						{champion.blurb}
+						{champion.lore}
 					</p>
 				</header>
 				<hr
