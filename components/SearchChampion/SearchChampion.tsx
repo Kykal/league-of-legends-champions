@@ -25,7 +25,6 @@ const SearchChampion = ({champions}: SearchChampion): JSX.Element => {
 	//NextJS
 	const router = useRouter();
 	const pathname = usePathname();
-	const searchParams = useSearchParams();
 
 
 	//States
@@ -68,7 +67,7 @@ const SearchChampion = ({champions}: SearchChampion): JSX.Element => {
 	//Main component render
 	return (
 		<form
-			className='flex items-center'
+			className='flex items-center border border-gold'
 			onSubmit={submitHandler}
 		>
 			<Input
