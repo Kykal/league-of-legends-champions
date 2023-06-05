@@ -27,9 +27,11 @@ const ChampionDisplay = ({ champion }: ChampionDisplay): JSX.Element => {
 	return (
 		<Link
 			href={href}
-			className='center relative border border-transparent hover:border-gold'
+			className='center border border-transparent hover:border-gold'
 		>
-			<figure>
+			<figure
+				className='relative'
+			>
 				<Image
 					src={src}
 					alt={alt}
