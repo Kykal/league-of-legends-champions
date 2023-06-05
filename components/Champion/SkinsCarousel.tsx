@@ -43,6 +43,10 @@ const SkinsCarousel = ({champion}: SkinsCarousel): JSX.Element => {
 		setIndex(index + 1);
 	};
 
+	const setIndexHandler = (newValue: number) => {
+		setIndex(newValue);
+	};
+
 	//Main component render
 	return (
 		<section>
@@ -75,7 +79,13 @@ const SkinsCarousel = ({champion}: SkinsCarousel): JSX.Element => {
 					>
 						<BiLeftArrowCircle />
 					</button>
-					{}
+					{[...Array(maxSkinIndex+1)].map( (_, i) => (
+						<button
+							key={`${champion.name}-index-skin-${i}`}
+							className={`border-2 border-gold rounded-xl p-2 ${i === index ? 'bg-dark-gold/75' : 'bg-transparent'}`}
+							onClick={() => setIndex(i)}
+						/>
+					) )}
 					<button
 						className='text-3xl disabled:cursor-not-allowed text-gold disabled:text-gold/50'
 						onClick={goNextHandler}
