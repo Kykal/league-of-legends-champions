@@ -32,29 +32,38 @@ export const generateMetadata = async ({
 }: Props): Promise<Metadata> => {
 	const champion: Champion = await readChampion(params.champion, searchParams.version);
 
-
+	const title = `https://league-of-legends-champions-data.vercel.app/champion/Aatrox?version=13.11.1`;
+	const image = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`;
 
 	return {
 		...sharedMetadata,
-		title: `${champion.name}, ${champion.title} | League of Legends Champions Data`,
+		title,
 		description: champion.lore,
 		twitter: {
 			...sharedMetadata.twitter,
-			title: `${champion.name}, ${champion.title} | League of Legends Champions Data`,
+			title,
 			images: [
 				{
-					url: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`,
-					secureUrl: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`,
+					url: image,
+					secureUrl: image,
+				},
+				{
+					url: image,
+					secureUrl: image,
 				},
 			],
 		},
 		openGraph: {
 			...sharedMetadata.openGraph,
-			title: `${champion.name}, ${champion.title} | League of Legends Champions Data`,
+			title,
 			images: [
 				{
-					url: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`,
-					secureUrl: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`,
+					url: image,
+					secureUrl: image,
+				},
+				{
+					url: image,
+					secureUrl: image,
 				},
 			],
 		},
