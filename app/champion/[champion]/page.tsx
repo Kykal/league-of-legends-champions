@@ -32,16 +32,18 @@ export const generateMetadata = async ({
 }: Props): Promise<Metadata> => {
 	const champion: Champion = await readChampion(params.champion, searchParams.version);
 
-	const title = `https://league-of-legends-champions-data.vercel.app/champion/Aatrox?version=13.11.1`;
+	const title = `${champion.name}, ${champion.title} | League of Legends Champions Data`;
 	const image = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`;
+	const description = champion.lore;
 
 	return {
 		...sharedMetadata,
 		title,
-		description: champion.lore,
+		description,
 		twitter: {
 			...sharedMetadata.twitter,
 			title,
+			description,
 			images: [
 				{
 					url: image,
@@ -56,6 +58,7 @@ export const generateMetadata = async ({
 		openGraph: {
 			...sharedMetadata.openGraph,
 			title,
+			description,
 			images: [
 				{
 					url: image,
