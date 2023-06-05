@@ -1,9 +1,34 @@
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-[![React](https://img.shields.io/badge/18.0.1-61DAFB?style=for-the-badge&logo=react&label=React&labelColor=20232A)](https://reactjs.org/)
-[![react-router](https://img.shields.io/badge/6.3.0-CE0C1B?style=for-the-badge&logo=react-router&label=react-router&labelColor=121212)](https://reactrouter.com/)
-[![redux](https://img.shields.io/badge/4.2.0-2C2C2C?style=for-the-badge&logo=Redux&label=Redux&labelColor=7646BA)](https://redux.js.org/)
-[![riotgames](https://img.shields.io/badge/DDRAGON-000000?style=for-the-badge&logo=riotgames&label=riotgames&labelColor=D22A36)](https://developer.riotgames.com/)
-[![react-icons](https://img.shields.io/badge/4.4.0-FFFFFF?style=for-the-badge&logo=react-icons&label=react-icons&labelColor=E91E63)](https://react-icons.github.io/react-icons)		
-[![styled-components](https://img.shields.io/badge/v6.0.0%20beta%201-333333?style=for-the-badge&logo=styled-components&label=styled-components&labelColor=FFFFFF)](https://styled-components.com/)
-# League of Legends Champions Data
-Browse all champions and read its information.
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
