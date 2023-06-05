@@ -27,7 +27,7 @@ const ChampionDisplay = ({ champion }: ChampionDisplay): JSX.Element => {
 	return (
 		<Link
 			href={href}
-			className='flex justify-center items-center'
+			className='center relative border border-transparent hover:border-gold'
 		>
 			<figure>
 				<Image
@@ -37,11 +37,7 @@ const ChampionDisplay = ({ champion }: ChampionDisplay): JSX.Element => {
 					height={height}
 					className='border border-black'
 				/>
-				<figcaption
-					className='text-gold text-xl text-center'
-				>
-					{champion.name}
-				</figcaption>
+				<_Caption champion={champion} />
 			</figure>
 		</Link>
 	);
@@ -49,3 +45,23 @@ const ChampionDisplay = ({ champion }: ChampionDisplay): JSX.Element => {
 
 
 export default ChampionDisplay; //Export main component
+
+
+
+const _Caption = ({ champion }: ChampionDisplay) => {
+
+	const text = 'text-gold text-xl text-center';
+	const position = 'absolute bottom-0';
+	const height = 'h-10';
+	const background = 'bg-black/75';
+	const size = 'w-full';
+
+
+	return(
+		<figcaption
+			className={`center ${text} ${position} ${height} ${background} ${size}`}
+		>
+			{champion.name}
+		</figcaption>
+	);
+}
