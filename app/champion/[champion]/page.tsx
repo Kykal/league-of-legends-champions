@@ -34,14 +34,16 @@ export const generateMetadata = async ({
 
 	const title = `${champion.name}, ${champion.title} | League of Legends Champions Data`;
 	const image = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`;
+	const description = champion.lore;
 
 	return {
 		...sharedMetadata,
 		title,
-		description: champion.lore,
+		description,
 		twitter: {
 			...sharedMetadata.twitter,
 			title,
+			description,
 			images: [
 				{
 					url: image,
@@ -56,6 +58,7 @@ export const generateMetadata = async ({
 		openGraph: {
 			...sharedMetadata.openGraph,
 			title,
+			description,
 			images: [
 				{
 					url: image,
