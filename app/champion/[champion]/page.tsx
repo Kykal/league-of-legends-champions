@@ -1,5 +1,6 @@
 //NextJS
 import Image from "next/image";
+import { Metadata, ResolvingMetadata } from "next";
 
 
 //Lib
@@ -12,10 +13,48 @@ import Header from "@/components/Champion/Header";
 import Champion from "@/typings/champion";
 
 
+
 //Typings
 import Main from "@/components/Champion/Main";
-type ChampionAsProps = {
-	champion:Champion;
+import sharedMetadata from "@/app/shared-metadata";
+type Props = {
+	params: {
+		champion: string,
+	};
+	searchParams: {
+		version?: string;
+	};
+}
+
+
+export const generateMetadata = async ({
+	params, searchParams
+}: Props): Promise<Metadata> => {
+	const champion: Champion = await readChampion(params.champion, searchParams.version);
+
+
+
+	return {
+		...sharedMetadata,
+		title: `${champion.name}, ${champion.title} | League of Legends Champions Data`,
+		description: champion.lore,
+		twitter: {
+			images: [
+				{
+					url: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`,
+					secureUrl: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`,
+				},
+			],
+		},
+		openGraph: {
+			images: [
+				{
+					url: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`,
+					secureUrl: `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`,
+				},
+			],
+		},
+	}
 }
 
 //Main component content

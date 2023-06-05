@@ -1,3 +1,7 @@
+//NextJS
+import { Metadata } from "next";
+
+
 //Library
 import { readChampionsPreview } from "@/lib/ddragon/readChampions";
 
@@ -5,10 +9,14 @@ import { readChampionsPreview } from "@/lib/ddragon/readChampions";
 //Components
 import SearchChampion		from "@/components/SearchChampion";
 import DisplayChampions	from "@/components/DisplayChampions";
+import sharedMetadata from "./shared-metadata";
 
 
 //Typings
 import { ChampionPreview } from "@/typings/champion";
+
+
+export const metadata: Metadata = sharedMetadata;
 
 
 //Main component content
