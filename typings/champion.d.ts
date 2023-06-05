@@ -21,6 +21,9 @@ type Champion = {
 		w: number;
 		h: number;
 	};
+	skins: {
+		[x: string]: Skin;
+	}
 	tags: string[];
 	partype: string;
 	stats: {
@@ -81,4 +84,11 @@ export type ChampionPassive = {
 		full: string;
 		sprite: string;
 	},
+}
+
+export type Skin = {
+	id: string;
+	num: number;
+	name: string;
+	chromas: boolean;
 }

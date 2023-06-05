@@ -67,7 +67,7 @@ const SearchChampion = ({champions}: SearchChampion): JSX.Element => {
 	//Main component render
 	return (
 		<form
-			className='flex items-center border border-gold'
+			className='flex items-center'
 			onSubmit={submitHandler}
 		>
 			<Input
