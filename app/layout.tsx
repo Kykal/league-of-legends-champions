@@ -1,9 +1,10 @@
 //NextJS
 import { Roboto } from 'next/font/google'
-export const metadata = {
-  title: 'League of Legends Champions Data',
-  description: 'Preview your favourite League of Legend champion\'s skin! Learn about them, their skills, history, cost and more!',
-};
+import { Metadata } from 'next';
+import sharedMetadata from './shared-metadata';
+
+
+export const metadata: Metadata = sharedMetadata;
 
 
 //Styles
