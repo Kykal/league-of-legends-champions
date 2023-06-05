@@ -41,7 +41,7 @@ const Page = async (props: any): Promise<JSX.Element> => {
 				champion={champion}
 			/>
 			<article
-				className='container mx-auto max-w-5xl shadow-black shadow-2xl bg-blue'
+				className='container mx-auto max-w-5xl shadow-black shadow-2xl bg-blue mb-8'
 			>
 				<figure>
 				<Image
