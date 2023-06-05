@@ -44,11 +44,17 @@ type Champion = {
 		attackdamageperlevel: number;
 		attackspeedperlevel: number;
 		attackspeed: number;
-	}
+	},
+	spells: {
+		0: ChampionSpell,
+		1: ChampionSpell,
+		2: ChampionSpell,
+		3: ChampionSpell,
+	},
+	passive: ChampionPassive;
 };
 
 export default Champion;
-
 
 
 export type ChampionPreview = {
@@ -56,3 +62,23 @@ export type ChampionPreview = {
 	id: string;
 	name: string;
 };
+
+
+export type ChampionSpell = {
+	id: string;
+	name: string;
+	description: string;
+	image: {
+		full: string;
+		sprite: string;
+	},
+}
+
+export type ChampionPassive = {
+	name: string;
+	description: string;
+	image: {
+		full: string;
+		sprite: string;
+	},
+}

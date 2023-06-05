@@ -8,11 +8,15 @@ import readChampion from "@/lib/ddragon/readChampion";
 
 //Components
 import BackgroundImage from "@/components/Champion/BackgroundImage";
+import Header from "@/components/Champion/Header";
+import Champion from "@/typings/champion";
 
 
 //Typings
-import Champion from "@/typings/champion";
-
+import Main from "@/components/Champion/Main";
+type ChampionAsProps = {
+	champion:Champion;
+}
 
 //Main component content
 const Page = async (props: any): Promise<JSX.Element> => {
@@ -21,8 +25,7 @@ const Page = async (props: any): Promise<JSX.Element> => {
 	
 
 	const splashSrc: string = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`;
-	const iconSrc: string = `https://ddragon.leagueoflegends.com/cdn/${champion.version}/img/champion/${champion.id}.png`;
-	const iconSize: number = 80;
+	
 
 	const alt: string = `${champion.id}-article-image`;
 	const width: number = 1215;
@@ -49,36 +52,11 @@ const Page = async (props: any): Promise<JSX.Element> => {
 					className={`${size}`}
 				/>
 				</figure>
-				<header
-					className='p-4 flex flex-col gap-4'
-				>
-					<figure
-						className='flex items-center gap-3'
-					>
-						<Image
-							src={iconSrc}
-							alt={`${champion.id}-square-icon`}
-							width={iconSize}
-							height={iconSize}
-						/>
-						<figcaption
-							className='text-3xl text-gold'
-						>
-							{champion.name}, {champion.title}
-						</figcaption>
-					</figure>
-					<p
-						className='container px-4 text-justify text-lg font-medium leading-9'
-					>
-						{champion.lore}
-					</p>
-				</header>
+				<Header champion={champion} />
 				<hr
 					className='border-ultra-light-blue'
 				/>
-				<main>
-					Main
-				</main>
+				<Main champion={champion} />
 			</article>
 		</>
 	);
