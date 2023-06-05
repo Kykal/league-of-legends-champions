@@ -82,7 +82,7 @@ const SkinsCarousel = ({champion}: SkinsCarousel): JSX.Element => {
 					{[...Array(maxSkinIndex+1)].map( (_, i) => (
 						<button
 							key={`${champion.name}-index-skin-${i}`}
-							className={`border-2 border-gold rounded-xl p-2 ${i === index ? 'bg-dark-gold/75' : 'bg-transparent'}`}
+							className={`border-2 ${i === index ? 'border-gold' : 'border-gold/50'} rounded-xl p-2 ${i === index ? 'bg-gold' : 'bg-transparent'}`}
 							onClick={() => setIndex(i)}
 						/>
 					) )}
