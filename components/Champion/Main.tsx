@@ -40,7 +40,7 @@ const _Abilities = ({champion}: Main) => {
 				Abilities
 			</h2>
 			<div
-				className='grid bg-light-blue p-4 flex gap-2 grid-cols-5 items-start'
+				className='grid bg-light-blue p-4 flex gap-2 grid-cols-1 sm:grid-cols-5 items-start'
 			>
 				<Passive champion={champion} />
 				{Object.entries(champion.spells).map( ([name, data]) => (

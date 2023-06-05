@@ -10,9 +10,7 @@ const readChampions = async (version?: string): Promise<Map<string, object>[]> =
 		version = await readLastVersion();
 	}
 
-  const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`);
 
   if( !res.ok ){
     throw new Error('Failed to fetch champions.');
@@ -32,9 +30,7 @@ export const readChampionsPreview = async (version?: string): Promise<ChampionPr
 		version = await readLastVersion();
 	}
 
-  const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`, {
-    cache: 'no-store',
-  });
+  const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/en_US/champion.json`);
 
   if( !res.ok ){
     throw new Error('Failed to fetch champions.');
