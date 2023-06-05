@@ -24,6 +24,14 @@ type SkinsCarousel = {
 type Skin = BaseSkin & {
  champion: string;
 }
+type Controllers = {
+	index: number;
+	maxSkinIndex: number;
+	goPreviousHandler: () => void;
+	goNextHandler: () => void;
+	setIndexHandler: (newIndex: number) => void;
+	champion: Champion;
+}
 
 
 //Main component content
@@ -64,36 +72,19 @@ const SkinsCarousel = ({champion}: SkinsCarousel): JSX.Element => {
 					{champion.skins[index].name}
 				</h3>
 				<div>
-					<Skin
+					<_Skin
 						champion={champion.id}
 						{...champion.skins[index]}
 					/>
 				</div>
-				<div
-					className='center gap-2'
-				>
-					<button
-						className='text-3xl disabled:cursor-not-allowed text-gold disabled:text-gold/50'
-						onClick={goPreviousHandler}
-						disabled={index === 0}
-					>
-						<BiLeftArrowCircle />
-					</button>
-					{[...Array(maxSkinIndex+1)].map( (_, i) => (
-						<button
-							key={`${champion.name}-index-skin-${i}`}
-							className={`border-2 ${i === index ? 'border-gold' : 'border-gold/50'} rounded-xl p-2 ${i === index ? 'bg-gold' : 'bg-transparent'}`}
-							onClick={() => setIndex(i)}
-						/>
-					) )}
-					<button
-						className='text-3xl disabled:cursor-not-allowed text-gold disabled:text-gold/50'
-						onClick={goNextHandler}
-						disabled={index === maxSkinIndex}
-					>
-						<BiRightArrowCircle />
-					</button>
-				</div>
+				<_Controllers
+					index={index}
+					goPreviousHandler={goPreviousHandler}
+					goNextHandler={goNextHandler}
+					setIndexHandler={setIndexHandler}
+					maxSkinIndex={maxSkinIndex}
+					champion={champion}
+				/>
 			</div>
 		</section>
 	);
@@ -104,45 +95,56 @@ export default SkinsCarousel; //Export main component
 
 
 
-const Skin = (props: Skin) => {
-	return(
-		<div
-			className='relative w-full min-w-full center max-h-96 aspect-video'
-		>
-			<_Loading {...props} />
-			<_Splash {...props} />
-		</div>
-	);
-}
-
-
-const _Loading = (props: Skin) => {
-	
-	const loading = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${props.champion}_${props.num}.jpg`;
-
-	return(
-		<Image
-			src={loading}
-			alt={`${props.champion}-loading-skin`}
-			width={308}
-			height={560}
-			className='h-full w-auto'
-		/>
-	);
-}
-
-
-const _Splash = (props: Skin) => {
+const _Skin = (props: Skin) => {
 	
 	const splash = `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${props.champion}_${props.num}.jpg`;
-
+	
 	return(
-		<Image
+		<div
+			className='relative w-full min-w-full center px-2'
+		>
+			<Image
 			src={splash}
 			alt={`${props.champion}-splash-skin`}
 			width={1215}
 			height={717}
 			className='h-full w-auto'
 		/>
+		</div>
+	);
+}
+
+
+const _Controllers = (props: Controllers) => {
+	return(
+		<div
+			className='center gap-2'
+		>
+			<button
+				className='text-3xl disabled:cursor-not-allowed text-gold disabled:text-gold/50'
+				onClick={props.goPreviousHandler}
+				disabled={props.index === 0}
+			>
+				<BiLeftArrowCircle />
+			</button>
+			<div
+				className='flex items-center gap-2 overflow-auto'
+			>
+				{[...Array(props.maxSkinIndex+1)].map( (_, i) => (
+					<button
+						key={`${props.champion.name}-index-skin-${i}`}
+						className={`border-2 ${i === props.index ? 'border-gold' : 'border-gold/50'} rounded-xl p-2 ${i === props.index ? 'bg-gold' : 'bg-transparent'}`}
+						onClick={() => props.setIndexHandler(i)}
+					/>
+				) )}
+			</div>
+			<button
+				className='text-3xl disabled:cursor-not-allowed text-gold disabled:text-gold/50'
+				onClick={props.goNextHandler}
+				disabled={props.index === props.maxSkinIndex}
+			>
+				<BiRightArrowCircle />
+			</button>
+		</div>
 	);
 }
