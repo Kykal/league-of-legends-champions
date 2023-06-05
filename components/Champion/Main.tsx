@@ -1,6 +1,7 @@
 //Components
 import Spell from "./_Spell";
 import Passive from "./_Passive";
+import SkinsCarousel from "./SkinsCarousel";
 
 
 //Typings
@@ -15,9 +16,10 @@ const Main = ({champion}: Main): JSX.Element => {
 	//Main component render
 	return (
 		<main
-			className='flex flex-col gap-4 p-8'
+			className='flex flex-col gap-8 px-8 pb-8 pt-4'
 		>
 			<_Abilities champion={champion} />
+			<SkinsCarousel champion={champion} />
 		</main>
 	);
 };

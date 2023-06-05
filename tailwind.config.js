@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fill: {
+        'gold': '#CAAB72',
+      },
       textColor: {
         'custom-white': '#E6E6E6',
         'light-gold': '#C9AA71',
